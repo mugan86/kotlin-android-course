@@ -31,4 +31,5 @@ dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     compile "org.jetbrains.anko:anko-common:$anko_version"
     // compile "com.squareup.retrofit2:retrofit:$retrofit_version"
+    compile "com.google.code.gson:gson:2.8.0"
 }
