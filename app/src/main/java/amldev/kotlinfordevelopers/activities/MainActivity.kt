@@ -1,11 +1,14 @@
-package amldev.kotlinfordevelopers
+package amldev.kotlinfordevelopers.activities
 
+import amldev.kotlinfordevelopers.adapters.ForecastListAdapter
+import amldev.kotlinfordevelopers.R
+import android.content.Context
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
-import android.view.ViewGroup
-import android.widget.TextView
+import android.widget.Toast
+import org.jetbrains.anko.find
 
 private val items = listOf<String>(
     "Mon 6/23 - Sunny - 31/17",
@@ -21,8 +24,13 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val forecastList = findViewById(R.id.forecast_list) as RecyclerView
+        val forecastList : RecyclerView = find(R.id.forecast_list) //Using Anko
         forecastList.layoutManager = LinearLayoutManager(this)
         forecastList.adapter = ForecastListAdapter(items)
+        toast("Example", Toast.LENGTH_LONG)
+    }
+
+    fun Context.toast(message: CharSequence, duration: Int = Toast.LENGTH_SHORT) {
+        Toast.makeText(this, message, duration).show()
     }
 }

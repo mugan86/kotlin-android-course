@@ -1,4 +1,4 @@
-package amldev.kotlinfordevelopers
+package amldev.kotlinfordevelopers.adapters
 
 import android.support.v7.widget.RecyclerView
 import android.view.ViewGroup
