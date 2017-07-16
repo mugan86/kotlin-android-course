@@ -1,8 +1,10 @@
 package amldev.kotlinfordevelopers.ui
 
+
 import amldev.kotlinfordevelopers.ui.adapters.ForecastListAdapter
 import amldev.kotlinfordevelopers.R
 import amldev.kotlinfordevelopers.domain.commands.RequestForecastCommand
+import amldev.kotlinfordevelopers.domain.model.Forecast
 import android.content.Context
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -26,7 +28,12 @@ class MainActivity : AppCompatActivity() {
         doAsync {
             val result = RequestForecastCommand("94043").execute()
             uiThread {
-                forecastList.adapter = ForecastListAdapter(result)
+                forecastList.adapter = ForecastListAdapter(result,
+                        object : ForecastListAdapter.OnItemClickListener {
+                            override fun invoke(forecast: Forecast) {
+                                toast("${forecast.date} / ${forecast.iconUrl}")
+                            }
+                        })
             }
         }
     }
