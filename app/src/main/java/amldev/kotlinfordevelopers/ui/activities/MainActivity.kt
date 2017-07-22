@@ -26,7 +26,8 @@ class MainActivity : AppCompatActivity() {
         forecastList.layoutManager = LinearLayoutManager(this)
         // TODO check this warning: https://developer.android.com/training/articles/security-config.html?hl=es-419
         doAsync {
-            val result = RequestForecastCommand("94043").execute()
+            val result1 = RequestForecastCommand("").execute()
+            val result = RequestForecastCommand("20590").execute()
             uiThread {
                 forecastList.adapter = ForecastListAdapter(result,
                         object : ForecastListAdapter.OnItemClickListener {
@@ -35,6 +36,8 @@ class MainActivity : AppCompatActivity() {
                             }
                         })
             }
+
+            //println(result1)
         }
     }
 

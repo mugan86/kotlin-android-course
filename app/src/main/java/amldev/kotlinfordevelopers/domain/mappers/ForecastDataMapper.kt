@@ -1,8 +1,8 @@
 package amldev.kotlinfordevelopers.domain.mappers
 
 
-import amldev.kotlinfordevelopers.data.Forecast
-import amldev.kotlinfordevelopers.data.ForecastResult
+import amldev.kotlinfordevelopers.data.ForecastNextDays
+import amldev.kotlinfordevelopers.data.ForecastNextDaysResult
 import amldev.kotlinfordevelopers.domain.model.ForecastList
 import java.text.DateFormat
 import java.util.*
@@ -15,11 +15,11 @@ import amldev.kotlinfordevelopers.domain.model.Forecast as ModelForecast
  */
 class ForecastDataMapper {
 
-    fun convertFromDataModel(forecast: ForecastResult): ForecastList {
+    fun convertFromDataModel(forecast: ForecastNextDaysResult): ForecastList {
         return ForecastList(forecast.city.name, forecast.city.country, convertForecastListToDomain(forecast.list))
     }
 
-    private fun convertForecastListToDomain(list: List<Forecast>): List<ModelForecast> {
+    private fun convertForecastListToDomain(list: List<ForecastNextDays>): List<ModelForecast> {
         return list.mapIndexed { i, forecast ->
             val dt = Calendar.getInstance().timeInMillis + TimeUnit.DAYS.toMillis(i.toLong())
             convertForecastItemToDomain(forecast.copy(dt = dt))
@@ -29,7 +29,7 @@ class ForecastDataMapper {
     private fun generateIconUrl(iconCode: String): String
             = "http://openweathermap.org/img/w/$iconCode.png"
 
-    private fun convertForecastItemToDomain(forecast: Forecast): ModelForecast {
+    private fun convertForecastItemToDomain(forecast: ForecastNextDays): ModelForecast {
         return ModelForecast(convertDate(forecast.dt), forecast.weather[0].description,
                 forecast.temp.max.toInt(), forecast.temp.min.toInt(), generateIconUrl(forecast.weather[0].icon))
     }
