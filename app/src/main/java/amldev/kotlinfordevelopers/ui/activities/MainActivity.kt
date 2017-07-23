@@ -1,10 +1,9 @@
 package amldev.kotlinfordevelopers.ui
 
-
-import amldev.kotlinfordevelopers.ui.adapters.ForecastListAdapter
 import amldev.kotlinfordevelopers.R
-import amldev.kotlinfordevelopers.domain.commands.RequestForecastCommand
+import amldev.kotlinfordevelopers.domain.commands.RequestDailyForecastCommand
 import amldev.kotlinfordevelopers.domain.model.Forecast
+import amldev.kotlinfordevelopers.ui.adapters.DailyForecastListAdapter
 import android.content.Context
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -26,18 +25,15 @@ class MainActivity : AppCompatActivity() {
         forecastList.layoutManager = LinearLayoutManager(this)
         // TODO check this warning: https://developer.android.com/training/articles/security-config.html?hl=es-419
         doAsync {
-            val result1 = RequestForecastCommand("").execute()
-            val result = RequestForecastCommand("20590").execute()
+            val result = RequestDailyForecastCommand("20590").execute()
             uiThread {
-                forecastList.adapter = ForecastListAdapter(result,
-                        object : ForecastListAdapter.OnItemClickListener {
+                forecastList.adapter = DailyForecastListAdapter(result,
+                        object : DailyForecastListAdapter.OnItemClickListener {
                             override fun invoke(forecast: Forecast) {
                                 toast("${forecast.date} / ${forecast.iconUrl}")
                             }
                         })
             }
-
-            //println(result1)
         }
     }
 

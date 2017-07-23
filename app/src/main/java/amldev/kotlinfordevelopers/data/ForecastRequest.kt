@@ -47,7 +47,7 @@ class ForecastRequest(val zipCode: String, val type: Int = 1, val days: Int = 7)
     }
 
     private fun getUseUrl() : String {
-        if (type === 1) { //Next days
+        if (1 == type) { //Next days
             if (zipCode != "") return getNextDaysWithZipCodeForecastURL(zipCode, days, "en") else return getNextDaysForecastURL("55.7104264", "20.4522144", days, "en")
         }
         return getNextHoursForecastURL("43.174778", "-2.411722", "en")

@@ -3,7 +3,7 @@ package amldev.kotlinfordevelopers.domain.mappers
 
 import amldev.kotlinfordevelopers.data.ForecastNextDays
 import amldev.kotlinfordevelopers.data.ForecastNextDaysResult
-import amldev.kotlinfordevelopers.domain.model.ForecastList
+import amldev.kotlinfordevelopers.domain.model.ForecastDailyList
 import java.text.DateFormat
 import java.util.*
 import java.util.concurrent.TimeUnit
@@ -15,8 +15,8 @@ import amldev.kotlinfordevelopers.domain.model.Forecast as ModelForecast
  */
 class ForecastDataMapper {
 
-    fun convertFromDataModel(forecast: ForecastNextDaysResult): ForecastList {
-        return ForecastList(forecast.city.name, forecast.city.country, convertForecastListToDomain(forecast.list))
+    fun convertFromDataModel(forecast: ForecastNextDaysResult): ForecastDailyList {
+        return ForecastDailyList(forecast.city.name, forecast.city.country, convertForecastListToDomain(forecast.list))
     }
 
     private fun convertForecastListToDomain(list: List<ForecastNextDays>): List<ModelForecast> {

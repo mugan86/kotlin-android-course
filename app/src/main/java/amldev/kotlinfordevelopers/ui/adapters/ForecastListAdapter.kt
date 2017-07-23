@@ -1,11 +1,11 @@
 package amldev.kotlinfordevelopers.ui.adapters
 
 import amldev.kotlinfordevelopers.R
-import amldev.kotlinfordevelopers.domain.model.ForecastList
 import android.support.v7.widget.RecyclerView
 import android.view.ViewGroup
 import android.widget.TextView
 import amldev.kotlinfordevelopers.domain.model.Forecast
+import amldev.kotlinfordevelopers.domain.model.ForecastDailyList
 import amldev.kotlinfordevelopers.ui.utils.ctx
 import android.view.LayoutInflater
 import android.view.View
@@ -18,9 +18,9 @@ import org.jetbrains.anko.find
  */
 
 
-class ForecastListAdapter(
-        val weekForecast: ForecastList, val itemClick: ForecastListAdapter.OnItemClickListener)
-    : RecyclerView.Adapter<ForecastListAdapter.ViewHolder>() {
+class DailyForecastListAdapter(
+        val weekForecast: ForecastDailyList, val itemClick: DailyForecastListAdapter.OnItemClickListener)
+    : RecyclerView.Adapter<DailyForecastListAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.ctx).inflate(R.layout.item_forecast, parent, false)
