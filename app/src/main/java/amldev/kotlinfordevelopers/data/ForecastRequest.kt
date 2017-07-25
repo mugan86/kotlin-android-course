@@ -46,19 +46,17 @@ class ForecastRequest(val location: String, val type: Int = 1, val days: Int = 7
 
     // Create Use URL in request depending type, zipcode and other properties
     private fun getUseUrl() : String {
-
-        // TODO Manage location
         var locationFindCoordinates : Boolean = false
         var list : List<String> = listOf()
         if (location.indexOf(',') != -1) { // Location coordinates
             list = location.split(",".toRegex()).filter { true }
             locationFindCoordinates = true
         }
-        println(list)
         if (1 == type) { //Next days
-            if (!locationFindCoordinates) return getNextDaysWithZipCodeForecastURL(location, days, "en") else return getNextDaysForecastURL("33", "33", days, "en")
+            if (!locationFindCoordinates) return getNextDaysWithZipCodeForecastURL(location, days, "en")
+            else return getNextDaysForecastURL(list[0], list[1], days, "en")
         }
-        return getNextHoursForecastURL("43.174778", "-2.411722", "en")
+        return getNextHoursForecastURL(list[0], list[1], "en")
     }
 
 }

@@ -25,18 +25,16 @@ class MainActivity : AppCompatActivity() {
         val forecastList : RecyclerView = find(R.id.forecast_list) //Using Anko
 
         forecastList.layoutManager = LinearLayoutManager(this)
-        button.text = "Show next hours"
+        button.text = "Show next hours forecast"
         readNextDaysForecast(forecastList)
-
-        //TODO
         button.setOnClickListener {
 
-            if (button.text.equals("Show next hours")) {
-                button.text = "Next Days"
+            if (button.text.equals("Show next hours forecast")) {
+                button.text = "Show next days forecast"
                 readNextHoursForecast(forecastList)
 
             } else {
-                button.text = "Show next hours"
+                button.text = "Show next hours forecast"
                 readNextDaysForecast (forecastList)
             }
         }
@@ -44,7 +42,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun readNextHoursForecast(forecastList : RecyclerView) {
         doAsync {
-            val result = RequestForecastCommand("20590", 2).execute()
+            val result = RequestForecastCommand("43.1754,-2.41249", 2).execute()
             uiThread {
                 forecastList.adapter = ForecastListAdapter(result,
                         object : ForecastListAdapter.OnItemClickListener {
@@ -58,7 +56,8 @@ class MainActivity : AppCompatActivity() {
 
     private fun readNextDaysForecast (forecastList : RecyclerView) {
         doAsync {
-            val result = RequestForecastCommand("20590").execute()
+            //ZIP 20590
+            val result = RequestForecastCommand("43.1754,-2.41249").execute()
             uiThread {
                 forecastList.adapter = ForecastListAdapter(result,
                         object : ForecastListAdapter.OnItemClickListener {

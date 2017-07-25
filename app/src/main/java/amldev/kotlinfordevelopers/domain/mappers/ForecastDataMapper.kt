@@ -1,9 +1,6 @@
 package amldev.kotlinfordevelopers.domain.mappers
 
-import amldev.kotlinfordevelopers.data.ForecastNextDays
-import amldev.kotlinfordevelopers.data.ForecastNextDaysResult
-import amldev.kotlinfordevelopers.data.ForecastNextHours
-import amldev.kotlinfordevelopers.data.ForecastNextHoursResult
+import amldev.kotlinfordevelopers.data.*
 import amldev.kotlinfordevelopers.domain.model.ForecastList
 import java.text.SimpleDateFormat
 import java.util.*
@@ -38,7 +35,7 @@ class ForecastDataMapper {
     }
 
     private fun generateIconUrl(iconCode: String): String
-            = "http://openweathermap.org/img/w/$iconCode.png"
+            = ForecastRequest.OPEN_WEATHER_MAP_API_IMG + "$iconCode.png"
 
     private fun convertForecastItemToDomain(forecast: ForecastNextDays): ModelForecast {
         return ModelForecast(convertDate(forecast.dt), forecast.weather[0].description,
