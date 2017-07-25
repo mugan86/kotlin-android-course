@@ -5,7 +5,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.ViewGroup
 import android.widget.TextView
 import amldev.kotlinfordevelopers.domain.model.Forecast
-import amldev.kotlinfordevelopers.domain.model.ForecastDailyList
+import amldev.kotlinfordevelopers.domain.model.ForecastList
 import amldev.kotlinfordevelopers.ui.utils.ctx
 import android.view.LayoutInflater
 import android.view.View
@@ -18,9 +18,9 @@ import org.jetbrains.anko.find
  */
 
 
-class DailyForecastListAdapter(
-        val weekForecast: ForecastDailyList, val itemClick: DailyForecastListAdapter.OnItemClickListener)
-    : RecyclerView.Adapter<DailyForecastListAdapter.ViewHolder>() {
+class ForecastListAdapter(
+        val daysForecast: ForecastList, val itemClick: ForecastListAdapter.OnItemClickListener)
+    : RecyclerView.Adapter<ForecastListAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.ctx).inflate(R.layout.item_forecast, parent, false)
@@ -29,10 +29,10 @@ class DailyForecastListAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         //Bind custom item (define in item_forecast.xml)
-        holder.bindForecast(weekForecast[position])
+        holder.bindForecast(daysForecast[position])
     }
 
-    override fun getItemCount(): Int = weekForecast.size()
+    override fun getItemCount(): Int = daysForecast.size()
 
     class ViewHolder(view: View,
                      val itemClick: OnItemClickListener) : RecyclerView.ViewHolder(view) {
@@ -59,3 +59,4 @@ class DailyForecastListAdapter(
         operator fun invoke(forecast: Forecast)
     }
 }
+

@@ -3,8 +3,19 @@ package amldev.kotlinfordevelopers.data
 /**
  * Created by anartzmugika on 15/7/17.
  */
+
+data class ForecastNextDays(val dt: Long, val temp: Temperature, val pressure: Float, val humidity: Int,
+                            val weather: List<Weather>, val speed: Float, val deg: Int, val clouds: Int,
+                            val rain: Float)
+data class ForecastNextHours(val dt: Long, val main: Main, val weather: List<Weather>, val clouds: Clouds,
+                             val wind: Wind, val sys: Sys,
+                             val dt_txt: String)
+
+//Obtener los resultados en la petición de los próximos días
 data class ForecastNextDaysResult(val city: City, val list: List<ForecastNextDays>)
 
+//Petición para las próximas horas. Será diferente los objetos de la lista ya que el resultado es diferente
+// Y hay que tratarlo de diferente manera
 data class ForecastNextHoursResult(val list: List<ForecastNextHours>)
 
 data class City(val id: Long, val name: String, val coord: Coordinates, val country: String,
@@ -12,12 +23,6 @@ data class City(val id: Long, val name: String, val coord: Coordinates, val coun
 
 data class Coordinates(val lon: Float, val lat: Float)
 
-data class ForecastNextDays(val dt: Long, val temp: Temperature, val pressure: Float, val humidity: Int,
-                    val weather: List<Weather>, val speed: Float, val deg: Int, val clouds: Int,
-                    val rain: Float)
-data class ForecastNextHours(val dt: Long, val main: Main, val weather: List<Weather>, val clouds: Clouds,
-                            val wind: Wind, val sys: Sys,
-                            val dt_text: String)
 
 data class Temperature(val day: Float, val min: Float, val max: Float, val night: Float,
                        val eve: Float, val morn: Float)

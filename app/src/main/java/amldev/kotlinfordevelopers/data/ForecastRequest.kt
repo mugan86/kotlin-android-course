@@ -12,7 +12,7 @@ import java.net.URL
  * donde se define la forma que tendrá la información al final del proceso de la petición
  ***********************************************************************************************************************/
 
-class ForecastRequest(val zipCode: String, val type: Int = 1, val days: Int = 7) {
+class ForecastRequest(val location: String, val type: Int = 1, val days: Int = 7) {
 
     companion object {
 
@@ -35,20 +35,28 @@ class ForecastRequest(val zipCode: String, val type: Int = 1, val days: Int = 7)
     }
 
     fun executeNextDays(): ForecastNextDaysResult {
-        val forecastJsonStr = URL(this.getUseUrl()).readText()
         //Obtain forecastJSONStr and pass to convert in ForecastResult
-        return Gson().fromJson(forecastJsonStr, ForecastNextDaysResult::class.java)
+        return Gson().fromJson(URL(this.getUseUrl()).readText(), ForecastNextDaysResult::class.java)
     }
 
     fun executeNextHours(): ForecastNextHoursResult {
-        val forecastJsonStr = URL(this.getUseUrl()).readText()
         //Obtain forecastJSONStr and pass to convert in ForecastResult
-        return Gson().fromJson(forecastJsonStr, ForecastNextHoursResult::class.java)
+        return Gson().fromJson(URL(this.getUseUrl()).readText(), ForecastNextHoursResult::class.java)
     }
 
+    // Create Use URL in request depending type, zipcode and other properties
     private fun getUseUrl() : String {
+
+        // TODO Manage location
+        var locationFindCoordinates : Boolean = false
+        var list : List<String> = listOf()
+        if (location.indexOf(',') != -1) { // Location coordinates
+            list = location.split(",".toRegex()).filter { true }
+            locationFindCoordinates = true
+        }
+        println(list)
         if (1 == type) { //Next days
-            if (zipCode != "") return getNextDaysWithZipCodeForecastURL(zipCode, days, "en") else return getNextDaysForecastURL("55.7104264", "20.4522144", days, "en")
+            if (!locationFindCoordinates) return getNextDaysWithZipCodeForecastURL(location, days, "en") else return getNextDaysForecastURL("33", "33", days, "en")
         }
         return getNextHoursForecastURL("43.174778", "-2.411722", "en")
     }
