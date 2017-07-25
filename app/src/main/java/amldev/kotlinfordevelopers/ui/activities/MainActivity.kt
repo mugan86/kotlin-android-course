@@ -2,7 +2,6 @@ package amldev.kotlinfordevelopers.ui
 
 import amldev.kotlinfordevelopers.R
 import amldev.kotlinfordevelopers.domain.commands.RequestForecastCommand
-import amldev.kotlinfordevelopers.domain.model.Forecast
 import amldev.kotlinfordevelopers.ui.adapters.ForecastListAdapter
 import android.content.Context
 import android.support.v7.app.AppCompatActivity
@@ -44,12 +43,9 @@ class MainActivity : AppCompatActivity() {
         doAsync {
             val result = RequestForecastCommand("43.1754,-2.41249", 2).execute()
             uiThread {
-                forecastList.adapter = ForecastListAdapter(result,
-                        object : ForecastListAdapter.OnItemClickListener {
-                            override fun invoke(forecast: Forecast) {
-                                toast("${forecast.date} / ${forecast.iconUrl}")
-                            }
-                        })
+
+                val adapter = ForecastListAdapter(result) { toast("${it.date} / ${it.description}") }
+                forecastList.adapter = adapter
             }
         }
     }
@@ -59,12 +55,8 @@ class MainActivity : AppCompatActivity() {
             //ZIP 20590
             val result = RequestForecastCommand("43.1754,-2.41249").execute()
             uiThread {
-                forecastList.adapter = ForecastListAdapter(result,
-                        object : ForecastListAdapter.OnItemClickListener {
-                            override fun invoke(forecast: Forecast) {
-                                toast("${forecast.date} / ${forecast.iconUrl}")
-                            }
-                        })
+                val adapter = ForecastListAdapter(result) { toast("${it.date} / ${it.description}") }
+                forecastList.adapter = adapter
             }
         }
     }
