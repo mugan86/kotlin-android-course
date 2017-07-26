@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">KotlinForDevelopers</string>
+    <string name="show_next_hours_forecast">Show next hours forecast</string>
+    <string name="show_next_days_forecast">Show next days forecast</string>
 </resources>

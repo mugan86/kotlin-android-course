@@ -24,16 +24,16 @@ class MainActivity : AppCompatActivity() {
         val forecastList : RecyclerView = find(R.id.forecast_list) //Using Anko
 
         forecastList.layoutManager = LinearLayoutManager(this)
-        button.text = "Show next hours forecast"
+        button.text = resources.getText(R.string.show_next_hours_forecast)
         readNextDaysForecast(forecastList)
         button.setOnClickListener {
 
-            if (button.text.equals("Show next hours forecast")) {
-                button.text = "Show next days forecast"
+            if (button.text == (resources.getText(R.string.show_next_hours_forecast))) {
+                button.text = resources.getText(R.string.show_next_days_forecast)
                 readNextHoursForecast(forecastList)
 
             } else {
-                button.text = "Show next hours forecast"
+                button.text = resources.getText(R.string.show_next_hours_forecast)
                 readNextDaysForecast (forecastList)
             }
         }
