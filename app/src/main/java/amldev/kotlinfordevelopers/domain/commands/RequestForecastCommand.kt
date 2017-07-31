@@ -7,7 +7,7 @@ import amldev.kotlinfordevelopers.domain.model.ForecastList
 /**
  * Created by anartzmugika on 15/7/17.
  */
-class RequestForecastCommand(val location: String, val type: Int = 1, val days: Int = 7) : Command<ForecastList> {
+class RequestForecastCommand(private val location: String, private val type: Int = 1, private val days: Int = 7) : Command<ForecastList> {
     //Sobreescribimos el comando execute de la interfaz Command
     override fun execute(): ForecastList {
         val forecastRequest = ForecastRequest(location, type, days)

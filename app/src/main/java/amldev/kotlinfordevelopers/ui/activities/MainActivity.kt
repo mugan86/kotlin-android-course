@@ -4,36 +4,32 @@ import amldev.kotlinfordevelopers.R
 import amldev.kotlinfordevelopers.domain.commands.RequestForecastCommand
 import amldev.kotlinfordevelopers.ui.adapters.ForecastListAdapter
 import android.content.Context
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
-import android.widget.Button
 import android.widget.Toast
 import org.jetbrains.anko.doAsync
-import org.jetbrains.anko.find
 import org.jetbrains.anko.uiThread
-
-
+//Use android-extensions
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val button: Button = find(R.id.optionForecastButton)
-        val forecastList : RecyclerView = find(R.id.forecast_list) //Using Anko
 
         forecastList.layoutManager = LinearLayoutManager(this)
-        button.text = resources.getText(R.string.show_next_hours_forecast)
+        optionForecastButton.text = resources.getText(R.string.show_next_hours_forecast)
         readNextDaysForecast(forecastList)
-        button.setOnClickListener {
+        optionForecastButton.setOnClickListener {
 
-            if (button.text == (resources.getText(R.string.show_next_hours_forecast))) {
-                button.text = resources.getText(R.string.show_next_days_forecast)
+            if (optionForecastButton.text == (resources.getText(R.string.show_next_hours_forecast))) {
+                optionForecastButton.text = resources.getText(R.string.show_next_days_forecast)
                 readNextHoursForecast(forecastList)
 
             } else {
-                button.text = resources.getText(R.string.show_next_hours_forecast)
+                optionForecastButton.text = resources.getText(R.string.show_next_hours_forecast)
                 readNextDaysForecast (forecastList)
             }
         }
