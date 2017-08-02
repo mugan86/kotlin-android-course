@@ -40,6 +40,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:layout_marginRight="8sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
@@ -59,6 +60,14 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Caption"
             tools:text="15º"/>
 
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:src="@drawable/ic_arrow_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
     </LinearLayout>
 
 </LinearLayout>
