@@ -3,6 +3,7 @@ package amldev.kotlinfordevelopers.ui
 import amldev.kotlinfordevelopers.R
 import amldev.kotlinfordevelopers.domain.commands.RequestForecastCommand
 import amldev.kotlinfordevelopers.ui.adapters.ForecastListAdapter
+import amldev.i18n.LocaleHelper
 import android.content.Context
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
@@ -15,6 +16,12 @@ import org.jetbrains.anko.uiThread
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
+
+    //To use LocaleHelper select language
+    override fun attachBaseContext(base: Context) {
+        super.attachBaseContext(LocaleHelper.onAttach(base))
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -32,6 +39,10 @@ class MainActivity : AppCompatActivity() {
                 optionForecastButton.text = resources.getText(R.string.show_next_hours_forecast)
                 readNextDaysForecast (forecastList)
             }
+        }
+
+        selectLanguageFab.setOnClickListener {
+            toast("Comming soon to select different languages")
         }
     }
 
