@@ -1,11 +1,14 @@
 package amldev.kotlinfordevelopers.ui
 
+
+import amldev.i18n.LocaleHelper
 import amldev.kotlinfordevelopers.R
 import amldev.kotlinfordevelopers.domain.commands.RequestForecastCommand
 import amldev.kotlinfordevelopers.ui.adapters.ForecastListAdapter
-import amldev.i18n.LocaleHelper
 import android.content.Context
+import android.content.DialogInterface
 import android.os.Bundle
+import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
@@ -43,12 +46,28 @@ class MainActivity : AppCompatActivity() {
 
         selectLanguageFab.setOnClickListener {
             toast("Comming soon to select different languages")
+            languageOptionsDialog()
+
         }
+    }
+
+    private fun languageOptionsDialog() {
+        val languages_strings = resources.getStringArray(R.array.language_string)
+
+        val language_codes = resources.getStringArray(R.array.language_codes)
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle(resources.getString(R.string.make_your_language_selection))
+        builder.setItems(languages_strings, DialogInterface.OnClickListener { dialog, item ->
+            LocaleHelper.setLocale(this@MainActivity, language_codes [item])
+            LocaleHelper.restartApp(this@MainActivity)
+
+        })
+        builder.create().show()
     }
 
     private fun readNextHoursForecast(forecastList : RecyclerView) {
         doAsync {
-            val result = RequestForecastCommand("43.1754,-2.41249", 2).execute()
+            val result = RequestForecastCommand("43.1754,-2.41249", 2, -1, this@MainActivity).execute()
             uiThread {
 
                 val adapter = ForecastListAdapter(result) { toast("${it.date} / ${it.description}") }
@@ -60,7 +79,7 @@ class MainActivity : AppCompatActivity() {
     private fun readNextDaysForecast (forecastList : RecyclerView) {
         doAsync {
             //ZIP 20590
-            val result = RequestForecastCommand("43.1754,-2.41249").execute()
+            val result = RequestForecastCommand("43.1754,-2.41249", 1, 7, this@MainActivity).execute()
             uiThread {
                 val adapter = ForecastListAdapter(result) { toast("${it.date} / ${it.description}") }
                 forecastList.adapter = adapter
