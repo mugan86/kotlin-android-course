@@ -1,6 +1,5 @@
 package amldev.kotlinfordevelopers.ui
 
-
 import amldev.i18n.LocaleHelper
 import amldev.kotlinfordevelopers.R
 import amldev.kotlinfordevelopers.domain.commands.RequestForecastCommand
@@ -12,6 +11,7 @@ import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.view.View
 import android.widget.Toast
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.uiThread
@@ -31,6 +31,7 @@ class MainActivity : AppCompatActivity() {
 
         forecastList.layoutManager = LinearLayoutManager(this)
         optionForecastButton.text = resources.getText(R.string.show_next_hours_forecast)
+        selectLanguageFab.visibility = View.GONE
         readNextDaysForecast(forecastList)
         optionForecastButton.setOnClickListener {
 
@@ -45,25 +46,12 @@ class MainActivity : AppCompatActivity() {
         }
 
         selectLanguageFab.setOnClickListener {
-            toast("Comming soon to select different languages")
-            languageOptionsDialog()
-
+            // toast("Comming soon to select different languages")
+            LocaleHelper.languageOptionsDialog(this@MainActivity)
         }
     }
 
-    private fun languageOptionsDialog() {
-        val languages_strings = resources.getStringArray(R.array.language_string)
 
-        val language_codes = resources.getStringArray(R.array.language_codes)
-        val builder = AlertDialog.Builder(this)
-        builder.setTitle(resources.getString(R.string.make_your_language_selection))
-        builder.setItems(languages_strings, DialogInterface.OnClickListener { dialog, item ->
-            LocaleHelper.setLocale(this@MainActivity, language_codes [item])
-            LocaleHelper.restartApp(this@MainActivity)
-
-        })
-        builder.create().show()
-    }
 
     private fun readNextHoursForecast(forecastList : RecyclerView) {
         doAsync {
@@ -72,6 +60,7 @@ class MainActivity : AppCompatActivity() {
 
                 val adapter = ForecastListAdapter(result) { toast("${it.date} / ${it.description}") }
                 forecastList.adapter = adapter
+                selectLanguageFab.visibility = View.VISIBLE
             }
         }
     }
@@ -83,6 +72,7 @@ class MainActivity : AppCompatActivity() {
             uiThread {
                 val adapter = ForecastListAdapter(result) { toast("${it.date} / ${it.description}") }
                 forecastList.adapter = adapter
+                selectLanguageFab.visibility = View.VISIBLE
             }
         }
     }
