@@ -4,9 +4,9 @@ import amldev.kotlinfordevelopers.ui.App
 import android.database.sqlite.SQLiteDatabase
 import org.jetbrains.anko.db.*
 
-/**
- * Created by Anartz Mugika on 15/08/2017.
- */
+/***************************************************************************************************
+ *                          Created by Anartz Mugika on 15/08/2017.
+ ***************************************************************************************************/
 class ForecastDbHelper() : ManagedSQLiteOpenHelper(App.instance,
         ForecastDbHelper.DB_NAME, null, ForecastDbHelper.DB_VERSION) {
 
