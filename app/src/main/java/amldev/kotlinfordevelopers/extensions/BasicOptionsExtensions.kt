@@ -1,4 +1,4 @@
-package amldev.kotlinfordevelopers.utils
+package amldev.kotlinfordevelopers.extensions
 
 import android.content.Context
 import android.net.ConnectivityManager

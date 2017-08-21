@@ -1,6 +1,6 @@
 package amldev.kotlinfordevelopers.data
 
-import amldev.kotlinfordevelopers.utils.isNetworkConnected
+import amldev.kotlinfordevelopers.extensions.isNetworkConnected
 import android.content.Context
 import com.google.gson.Gson
 import com.google.gson.JsonParser
