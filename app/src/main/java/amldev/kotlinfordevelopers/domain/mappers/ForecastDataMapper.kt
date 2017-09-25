@@ -1,6 +1,6 @@
 package amldev.kotlinfordevelopers.domain.mappers
 
-import amldev.kotlinfordevelopers.data.*
+import amldev.kotlinfordevelopers.data.server.*
 import amldev.kotlinfordevelopers.domain.model.ForecastList
 import java.text.SimpleDateFormat
 import java.util.*

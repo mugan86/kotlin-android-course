@@ -1,4 +1,4 @@
-package amldev.kotlinfordevelopers.data
+package amldev.kotlinfordevelopers.data.server
 
 /**
  * Created by anartzmugika on 15/7/17.
