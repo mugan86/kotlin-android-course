@@ -1,0 +1,45 @@
+{
+  "towns": [
+    {
+      "name": "Soraluze",
+      "province": "Gipuzkoa",
+      "location": {
+        "lat": 43.1740007,
+        "lng": -2.412663899999984
+
+      }
+    },
+    {
+      "name": "Eibar",
+      "province": "Gipuzkoa",
+      "location": {
+        "lat": 43.1843702155763,
+        "lng": -2.4733293056488037
+      }
+    },
+    {
+      "name": "Malgrat de Mar",
+      "province": "Barcelona",
+      "location": {
+        "lat": 41.6528561,
+        "lng": 2.7630470999999943
+      }
+    },
+    {
+      "name": "Medina de Pomar",
+      "province": "Burgos",
+      "location": {
+        "lat": 42.9296692,
+        "lng": -3.4876361000000315
+      }
+    },
+    {
+      "name": "Jaca",
+      "province": "Huesca",
+      "location": {
+        "lat": 42.57171659999999,
+        "lng": -0.5470553999999765
+      }
+    }
+  ]
+}
