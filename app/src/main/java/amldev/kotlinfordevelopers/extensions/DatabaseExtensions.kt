@@ -4,7 +4,7 @@ import android.database.sqlite.SQLiteDatabase
 import org.jetbrains.anko.db.MapRowParser
 import org.jetbrains.anko.db.SelectQueryBuilder
 
-/**
+/******************************************
  * Created by anartzmugika on 21/8/17.
  */
 fun <T : Any> SelectQueryBuilder.parseList(parser: (Map<String, Any?>) -> T): List<T> =
