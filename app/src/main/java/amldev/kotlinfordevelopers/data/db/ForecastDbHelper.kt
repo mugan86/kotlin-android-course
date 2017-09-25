@@ -20,7 +20,9 @@ class ForecastDbHelper() : ManagedSQLiteOpenHelper(App.instance,
         db.createTable(CityForecastTable.NAME, true,
                 CityForecastTable.ID to INTEGER + PRIMARY_KEY,
                 CityForecastTable.CITY to TEXT,
-                CityForecastTable.COUNTRY to TEXT)
+                CityForecastTable.COUNTRY to TEXT,
+                CityForecastTable.LAT to TEXT,
+                CityForecastTable.LNG to TEXT)
 
         db.createTable(DayForecastTable.NAME, true,
                 DayForecastTable.ID to INTEGER + PRIMARY_KEY + AUTOINCREMENT,
@@ -33,7 +35,7 @@ class ForecastDbHelper() : ManagedSQLiteOpenHelper(App.instance,
 
     companion object {
         val DB_NAME = "forecast.db"
-        val DB_VERSION = 1
+        val DB_VERSION = 2
         val instance by lazy { ForecastDbHelper() }
     }
 
