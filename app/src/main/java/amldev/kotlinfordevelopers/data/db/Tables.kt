@@ -1,6 +1,6 @@
 package amldev.kotlinfordevelopers.data.db
 
-/**
+/**********************************************************************
  * Created by Anartz Mugika on 15/08/2017.
  */
 object CityForecastTable {
@@ -8,6 +8,8 @@ object CityForecastTable {
     val ID = "_id"
     val CITY = "city"
     val COUNTRY = "country"
+    val LAT = "lat"
+    val LNG = "lng"
 }
 
 object DayForecastTable {

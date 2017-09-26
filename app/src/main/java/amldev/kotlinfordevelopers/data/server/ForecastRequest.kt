@@ -1,6 +1,6 @@
-package amldev.kotlinfordevelopers.data
+package amldev.kotlinfordevelopers.data.server
 
-import amldev.kotlinfordevelopers.utils.isNetworkConnected
+import amldev.kotlinfordevelopers.extensions.isNetworkConnected
 import android.content.Context
 import com.google.gson.Gson
 import com.google.gson.JsonParser
@@ -26,15 +26,15 @@ class ForecastRequest(val location: String, val type: Int = 1, val days: Int = 7
         val OPEN_WEATHERMAP_API_KEY = "&APPID=58dda22dc16b4ec458a95a0a7f2e921d";
 
         fun getNextDaysWithZipCodeForecastURL(zipCode: String, days: Int = 7, language: String = "en"): String {
-            return "$URL_LOCALHOST/daily?&mode=json&units=metric&lang=$language&cnt=$days$OPEN_WEATHERMAP_API_KEY&q=$zipCode"
+            return "${URL_LOCALHOST}/daily?&mode=json&units=metric&lang=$language&cnt=$days${OPEN_WEATHERMAP_API_KEY}&q=$zipCode"
         }
 
         fun getNextDaysForecastURL(lat: String, lng: String, days: Int = 7, language: String = "en"): String {
-            return "$URL_LOCALHOST/daily?lat=$lat&lon=$lng&mode=json&units=metric&lang=$language&cnt=$days$OPEN_WEATHERMAP_API_KEY"
+            return "${URL_LOCALHOST}/daily?lat=$lat&lon=$lng&mode=json&units=metric&lang=$language&cnt=$days${OPEN_WEATHERMAP_API_KEY}"
         }
 
         fun getNextHoursForecastURL(lat: String, lng: String, language: String = "en"): String {
-            return "$URL_LOCALHOST?lat=$lat&lon=$lng&mode=json&units=metric&lang=$language$OPEN_WEATHERMAP_API_KEY"
+            return "${URL_LOCALHOST}?lat=$lat&lon=$lng&mode=json&units=metric&lang=$language${OPEN_WEATHERMAP_API_KEY}"
         }
     }
 

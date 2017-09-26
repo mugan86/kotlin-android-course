@@ -2,6 +2,7 @@ package amldev.kotlinfordevelopers.ui
 
 import amldev.i18n.LocaleHelper
 import amldev.kotlinfordevelopers.R
+import amldev.kotlinfordevelopers.data.db.ForecastDbHelper
 import amldev.kotlinfordevelopers.domain.commands.RequestForecastCommand
 import amldev.kotlinfordevelopers.ui.adapters.ForecastListAdapter
 import android.content.Context
@@ -79,7 +80,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun getIntentExtras(): Array<String> {
-        var data: Array<String> = arrayOf("", "", "")
+        val data: Array<String> = arrayOf("", "", "")
         data.set( 0,intent.getStringExtra("lat") ?: "43.1754" )
         data.set( 1, intent.getStringExtra("lng")?: "-2.41249" )
         return data

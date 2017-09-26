@@ -17,19 +17,12 @@ object LocaleHelper {
 
     private val SELECTED_LANGUAGE = "SELECT_LANGUAGE"
 
-    fun onAttach(context: Context): Context {
-        val lang = getPersistedData(context, Locale.getDefault().language)
-        return setLocale(context, lang)
-    }
+    fun onAttach(context: Context): Context = setLocale(context, getPersistedData(context, Locale.getDefault().language))
 
-    fun onAttach(context: Context, defaultLanguage: String): Context {
-        val lang = getPersistedData(context, defaultLanguage)
-        return setLocale(context, lang)
-    }
+    fun onAttach(context: Context, defaultLanguage: String): Context = setLocale(context, getPersistedData(context, defaultLanguage))
 
-    fun getLanguage(context: Context): String {
-        return getPersistedData(context, Locale.getDefault().language)
-    }
+    fun getLanguage(context: Context): String =
+            getPersistedData(context, Locale.getDefault().language)
 
     fun setLocale(context: Context, language: String): Context {
         persist(context, language)

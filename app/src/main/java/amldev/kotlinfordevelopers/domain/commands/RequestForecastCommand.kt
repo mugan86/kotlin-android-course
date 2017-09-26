@@ -1,6 +1,6 @@
 package amldev.kotlinfordevelopers.domain.commands
 
-import amldev.kotlinfordevelopers.data.ForecastRequest
+import amldev.kotlinfordevelopers.data.server.ForecastRequest
 import amldev.kotlinfordevelopers.domain.mappers.ForecastDataMapper
 import amldev.kotlinfordevelopers.domain.model.ForecastList
 import android.content.Context
