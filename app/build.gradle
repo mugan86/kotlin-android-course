@@ -36,5 +36,5 @@ dependencies {
     // compile "com.squareup.retrofit2:retrofit:$retrofit_version"
     compile "com.google.code.gson:gson:$gson_version"
     compile "com.squareup.picasso:picasso:$picasso_version"
-    compile project(':i18')
+    compile project(':i18n')
 }
