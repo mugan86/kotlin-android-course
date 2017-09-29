@@ -2,7 +2,6 @@ package amldev.kotlinfordevelopers.ui
 
 import amldev.i18n.LocaleHelper
 import amldev.kotlinfordevelopers.R
-import amldev.kotlinfordevelopers.data.db.ForecastDbHelper
 import amldev.kotlinfordevelopers.domain.commands.RequestForecastCommand
 import amldev.kotlinfordevelopers.ui.adapters.ForecastListAdapter
 import android.content.Context
