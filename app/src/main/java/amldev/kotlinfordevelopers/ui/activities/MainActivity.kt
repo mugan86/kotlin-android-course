@@ -1,4 +1,4 @@
-package amldev.kotlinfordevelopers.ui
+package amldev.kotlinfordevelopers.ui.activities
 
 import amldev.i18n.LocaleHelper
 import amldev.kotlinfordevelopers.R
